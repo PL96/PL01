@@ -1,0 +1,41 @@
+<!DOCTYPE html >
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>audio</title>
+</head>
+
+<body>
+<style>
+#audio1 {border-style:ridge;
+border-color:#0FF;
+border-width:15px
+}
+</style>
+<script>
+function playnusic(){
+document.getElementById("audio1").play();
+}
+</script>
+<body onLoad="playmusic();">
+<Div style="margin-left:40px;">
+<h1>Music plays without any Visible player</h1>
+<br><br>
+<audio id="audio1">
+	<source src="2.MP4" type="audio/ogg"/>
+    <source src="movie.ogg" type="audio/ogg"/>
+</audio>
+<br><br>
+</div>
+</body>
+</html>
+<!--
+Audio元素简介
+在HTML5中，audio元素与vodeo元素非常类似，，但audio元素没有视频效果，audio元素是HTML5中的一个原生元素，它不在需要使用第三方播放器，与video非常类似，可以使用CSS设置audio的样式，
+audio元素可以包括多个音频资源，这些音频资源可以使用src属性或者source元素来进行描述，浏览器会选择一种最合适的来使用，当前，audio元素支持3种，音频格式，0ggvorbos,MP3和wav,
+隐藏的audio播放器，在audio标记中，如果不包含control属性，则audio播放器不会呈现在页面上，在这种情况下，用户无法使用标准控件来启动音频播放，在不呈现audio的情况下，可以启动audio元素的音频播放的方法放在页面的load事件中，
+
+
+
+
+
+
+-->

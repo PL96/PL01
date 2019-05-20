@@ -1,0 +1,32 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+</head>
+
+<body>
+<video width="500" height="400" controls="controls">
+	<source src="1.3gp" type="video/3gp">
+    <source src="2.mp4" type="video/mp4">
+</video>
+</body>
+</html> 
+<!--
+链接不同的视频文件
+source元素用于给媒体指定多个可选择的文件地址，且只能在媒体标签没有使用src属性时使用，source元素可以链接不同格式的视频文件，浏览器检测并使用第一种可识别的格式，
+下面例子中，浏览器如果支持MP4则播放视频，不支持MP4不播放视频
+<video src="xxx.mp4"autoplay></video>
+而如果向下面指定多个媒体源的话，当浏览器支持MP4时会播放MP4,不支持MP4的时候会按顺序播放下面的WEBM或OGG视频，
+<video>
+	<source src="xxx.mp3" type="video/mp4">
+    <source src="xxx.wav" type="video/webm">
+	<source src="xxx.ogg" type=video/ogg>
+</video>
+此元素包含src,type,media3个属性，
+src属性：用于指定媒体的地址。
+type属性：用于说明媒体的类型，帮助浏览器在获取媒体前判断是否支持此类媒体格式
+media属性：用于说明媒体在何种媒介中使用，不设置默认值为all,表示支持所有媒介。
+
+
+-->

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>径向渐变</title>
+<style>
+body { background-color:#eeeeee;}
+#outer { margin-left:40px;margin-top:40px;}
+</style>
+</head>
+<body>
+<Div id="outer">
+<canvas id="canvas1" width="400" height="400">
+Your brower doesn't support the canvas! Try another browser.
+</canvas>
+</div>
+<script>
+var mycanvas=document.getElementById("canvas1");
+var cntx=mycanvas.getContext('2d');
+var mygradient= cntx.createLinearGradient(200,200,10,300,300);
+mygradient.addColorStop("0","#CC3");
+mygradient.addColorStop(".25","#FF0");
+mygradient.addColorStop(".50","#390");
+mygradient.addColorStop(".75","#90C");
+mygradient.addColorStop("1.0","#9FF");
+cntx.fillStyle=mygradient;
+cntx.fillRect(0,0,400,400);
+</script>
+</body>
+</html>
+<!--
+与线性渐变一样，径向渐变也使用颜色点来定义颜色渐变的分界点，用于创建径向渐变的参数定义了两个圆形，
+
+-->

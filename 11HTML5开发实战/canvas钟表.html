@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>canvas钟表</title>
+<meta name="keywords" content="">
+<meta name="author" content="@my_programmer">
+<style type="text/css">
+body { margin:0;}
+</style>
+</head>
+<body onload="run()">
+<canvas id="canvas" width=400 height=400 style="border:1px #ccc solid;">如果你看到这段文字，说明你浏览器弱爆了</canvas>
+<script>
+window.onload=draw;
+function draw()
+{
+var canvas=document.getElementById('canvas');
+var context=canvas.getContext('2d');
+context.save();////////////////////////保存
+var deg=2*Math.PI/12;
+//////////////////////////////////////表盘
+context.save();
+context.beginPath();
+for( var i=0;i<13;i++){
+var x=Math.sin(i*deg);
+var y=-Math.cos(i*deg);
+context.lineTo(x*150,y*150);	
+}
+var c=context.createRadialGradient(0,0,0,0,0,130);
+c.addColorStop(0,"#360");
+c.addColorStop(1,"#6C0")
+context.fillStyle=c;
+context.fill();
+context.closePath();
+context.restore();
+//////////////////////////////////////数字
+context.save();
+context.beginPath();
+for(var i=1;i<13;i++)
+{
+var x1=Math.sin(i*deg);
+var y1=-Math.cos(i*deg);
+context.fillStyle="#fff"
+context.font="bold 20px Calibri";
+context.textAlign='center';
+context.textBaseline='middle';
+context.fillText(i,x1*120,y1*120);
+}
+context.closePath();
+context.restore();
+////////////////////////////////////大刻度
+context.save();
+context.beginPath();
+for(var i=0;i<12;i++)
+{
+var x2=Math.sin(i*deg);
+var y2=-Math.cos(i*deg);
+context.moveTo(x2*148,y2*148);
+context.lineTo(x2*135,y2*135);	
+}
+context.strokeStyle="#fff";
+context.lineWidth=4;
+context.stroke();
+context.closePath();
+context.restore();
+//////////////////////////////////小刻度
+context.save();
+var deg1=2*Math.PI/60;
+context.beginPath();
+for(var i=0;i<60;i++)
+{
+var x2=Math.sin(i*deg);
+var y2=-Math.cos(i*deg);
+context.moveTo(x2*146,y2*146);
+context.lineTo(x2*140,y2*140);
+}
+context.strokeStyle='#fff';
+context.lineWidth=2;
+context.stroke();
+context.colsePath();
+//////////////////////////////////文字
+context.save();
+context.strokeStyle="fff";
+context.font='34px sans-serif';
+context.textAlign='center';
+context.textBaseline='middle';
+context.strokeText('canvas',0,65);
+context.restore();
+//////////////////////////////new Date
+var time=new Date();
+var h=(time.getHours()%12)*2*Math.PI/12;
+var m=time.getMinutes()*2*Math.PI/60;
+var s=time.getSeconds()*2*Math.PI/60;
+//////////////////////////////////////时钟
+context.save();
+context.rotate(h+m/12+s/720);
+context.beginPath();
+context.moveTo(0,6);
+context.lineTo(0,-85);
+context.strokeStyle='#fff';
+context.lineWidth=6;
+context.stroke();
+context.closePath();
+context.restore();
+///////////////////////////////分针
+context.save();
+context.rotate(h+m/12+s/720);
+context.beginPath();
+context.moveTo(0,8);
+context.lineTo=(0,-105);
+context.strokeStyle="#fff";
+context.lineWidth=4;
+context.stroke();
+context.closePath();
+context.restore();
+///////////////////////////////秒针
+context.save();
+context.rotate(s);
+context.beginPath();
+context.moveTo(0,10);
+context.lineTo(0,-120);
+context.strokeStyle="#fff";
+context.lineWidth=2;
+context.stroke();
+
+context.closePath();
+context.restore();
+context.restore();/////////////////攒出
+setTimeout(draw,1000);////////////计时器
+}
+</script>
+</body>
+</html>
